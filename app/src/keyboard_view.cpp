@@ -106,7 +106,7 @@ void ButtonView::draw(NVGcontext* vg, float x, float y, float width,
                 if (!pressed && oldController.buttons[button]) {
                     keysState[key] = false;
                     this->playClickAnimation(false, false, true);
-                else if (pressed) {
+                } else if (pressed) {
                     keysState[key] = true;
                 }
             }
