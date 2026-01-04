@@ -103,8 +103,12 @@ void ButtonView::draw(NVGcontext* vg, float x, float y, float width,
         bool pressed = controller.buttons[button];
         if (!triggerType && !controller.buttons[modButton]) {
             if (!dummy) {
-                keysState[key] = pressed;
-                this->playClickAnimation(!pressed, false, true);
+                if (!pressed && oldController.buttons[button]) {
+                    keysState[key] = false;
+                    this->playClickAnimation(false, false, true);
+                else if (pressed) {
+                    keysState[key] = true;
+                }
             }
         } else if (pressed) {
             keysState[key] = !keysState[key];
